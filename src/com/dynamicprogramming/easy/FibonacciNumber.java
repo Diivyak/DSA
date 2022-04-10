@@ -1,4 +1,4 @@
-package com.dynamicprogramming;
+package com.dynamicprogramming.easy;
 
 public class FibonacciNumber {
 
