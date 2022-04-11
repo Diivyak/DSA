@@ -12,7 +12,8 @@ public class BitManipulation {
 //		System.out.println(getRightMostSetBit(136));
 //		System.out.println(getNonRepeatingNumbers(new int[] {2,11,3,11,7,3,9,2}));
 		
-		System.out.println(isOppSigns(100, -100));
+//		System.out.println(isOppSigns(100, -100));
+		System.out.println(addOne(10));
 	}
 	
 	public static int getEleThatAppearsOnce(int[] arr) {
@@ -68,10 +69,10 @@ public class BitManipulation {
 	
 	
 	// Binary representation
-	public static String getBinaryRepresentation(long n) {
+	public static String getBinaryRepresentation(int n) {
 		String ans = "";
 		for(int i=0; i<32;i++) {
-			long bit = n&1;
+			int bit = n&1;
 			n = (n>>1);
 			ans = String.valueOf(bit) + ans;
 		}
@@ -98,12 +99,45 @@ public class BitManipulation {
 		return num1 < num2 ? new int[] {num1, num2} : new int[] {num2, num1};
 	}
 	
+	static boolean oppositeSigns(int x, int y)
+	{
+	    return ((x ^ y) >> 31) == 1;
+	}
 	public static boolean isOppSigns(int a, int b) {
-		// Check MSB, if MSB = 1 number is negative else positive
-		boolean aSignPos = ((a & (1 <<31)) == 0);
-		boolean bSignPos = ((b & (1 <<31)) == 0);
-		return aSignPos != bSignPos;
+		// Sol#1 - Check MSB, if MSB = 1 number is negative else positive
+//		boolean aSignPos = ((a & (1 <<31)) == 0);
+//		boolean bSignPos = ((b & (1 <<31)) == 0);
+//		return aSignPos != bSignPos;
+//		
+		
+		//Sol#2 - If integers are of opposite sign then XOR of a & b is always negative because the MSB for one of the number is set.
+		// When we do XOR of two numbers with opposite sign then it's MSB will be set that is it will be negative number.
+//		return ((a^b) < 0);
+		
+		//Sol#3 - Do XOR of given numbers then check if 32th bit is set to 1 or not.
+		// If the bit set to 1 then both are of opposite sign.
+		System.out.println(getBinaryRepresentation(a));
+		System.out.println(getBinaryRepresentation(b));
+		
+		System.out.println(getBinaryRepresentation(a^b));
+		System.out.println(getBinaryRepresentation(1<<31));
+//		return ((a^b) & (1<<31)) != 0;
+		return (((a^b)>>31) & (1)) == 1;
 		
 	}
-
+	
+	public static int addOne(int n) {
+		int bit = 1;
+		System.out.println(getBinaryRepresentation(n));
+		while((n & bit) == 1) {
+			 n ^= bit;
+			 System.out.println(getBinaryRepresentation(n));
+			 bit = bit<<1;
+		}
+		System.out.println(getBinaryRepresentation(n));
+		n |= bit;
+		System.out.println(getBinaryRepresentation(n));
+		return n;
+	}
+	
 }
