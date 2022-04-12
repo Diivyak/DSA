@@ -2,19 +2,7 @@ package com.bitmanipulation;
 
 public class BitManipulation {
 
-	public static void main(String[] args) {
-//		System.out.println(getBinaryRepresentation(2147483649L));
-//		System.out.println(getEleThatAppearsOnce(new int[]{12, 1, 12, 3, 12, 1, 1, 2, 3, 3}));
 
-		// Array contains all elements appearing even number of times expect one element in odd number of times.
-//		System.out.println(getEleThatOccursOddTimes(new int[] {1,1,2,2,3,4,6,3,7,6,6,6,8,7,8}));
-		
-//		System.out.println(getRightMostSetBit(136));
-//		System.out.println(getNonRepeatingNumbers(new int[] {2,11,3,11,7,3,9,2}));
-		
-//		System.out.println(isOppSigns(100, -100));
-		System.out.println(addOne(10));
-	}
 	
 	public static int getEleThatAppearsOnce(int[] arr) {
 		int ans = 0, n = arr.length;
@@ -140,4 +128,40 @@ public class BitManipulation {
 		return n;
 	}
 	
+	public static int multipleNumWithThreeDotFive(int n) {
+		// n * (3.5) = (2n + n + n/2);
+		
+		return (n<<1) + n + (n>>1);
+		
+	}
+	
+	public static int turnOffRightMostSetBit(int n) {
+		int bit = 0, val = n;
+		System.out.println(getBinaryRepresentation(n));
+		while(((n>>bit) & 1) != 1) {
+			bit++;
+//			n <<= 1;
+			System.out.println(getBinaryRepresentation(n));
+			System.out.println(getBinaryRepresentation(bit));
+		}
+//		System.out.println(getBinaryRepresentation(bit));
+//		n = (n<<bit) ^ 0;
+//		System.out.println(getBinaryRepresentation(n));
+		return n;
+	}
+	public static void main(String[] args) {
+//		System.out.println(getBinaryRepresentation(2147483649L));
+//		System.out.println(getEleThatAppearsOnce(new int[]{12, 1, 12, 3, 12, 1, 1, 2, 3, 3}));
+
+		// Array contains all elements appearing even number of times expect one element in odd number of times.
+//		System.out.println(getEleThatOccursOddTimes(new int[] {1,1,2,2,3,4,6,3,7,6,6,6,8,7,8}));
+		
+//		System.out.println(getRightMostSetBit(136));
+//		System.out.println(getNonRepeatingNumbers(new int[] {2,11,3,11,7,3,9,2}));
+		
+//		System.out.println(isOppSigns(100, -100));
+//		System.out.println(addOne(10));
+		System.out.println(multipleNumWithThreeDotFive(11));
+//		System.out.println(turnOffRightMostSetBit(12));
+	}
 }
