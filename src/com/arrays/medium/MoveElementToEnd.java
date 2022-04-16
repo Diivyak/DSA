@@ -16,12 +16,9 @@ public class MoveElementToEnd {
 	int n = array.size();
 		int i=0, j = n-1;
 		while(i< j) {
-			while((j > i) && array.get(j) == toMove) {
-					j--;
-			}
-			if(array.get(i) == toMove) {
-					swap(array, i, j);
-			}
+			while((j > i) && array.get(j) == toMove) j--;
+			if(array.get(i) == toMove)
+				swap(array, i, j);
 			i++;
 		}
 		
