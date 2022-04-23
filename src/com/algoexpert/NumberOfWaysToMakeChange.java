@@ -9,7 +9,8 @@ public class NumberOfWaysToMakeChange {
 			for(int i=1; i<=len;i++) {
 				for(int j=0; j<=n;j++) {
 				
-					dp[i][j] = dp[i-1][j] + (j >= denoms[i-1] ? dp[i][j-denoms[i-1]] : 0);
+					dp[i][j] = dp[i-1][j] ;
+					if(j >= denoms[i-1]) Math.min(dp[i][j], dp[i][j-denoms[i-1]]);
 				}
 			}
 	    return dp[len][n];
