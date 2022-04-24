@@ -149,6 +149,22 @@ public class BitManipulation {
 //		System.out.println(getBinaryRepresentation(n));
 		return n;
 	}
+	public static int addTwoNumbers(int x, int y) {
+		int carry = 0;
+		System.out.println("x=="+getBinaryRepresentation(x));
+		System.out.println("y=="+getBinaryRepresentation(y));
+		while(y> 0) {
+			 carry = x&y;
+			 System.out.println("carry=="+getBinaryRepresentation(carry));
+			 x = x^y;
+			 System.out.println("x=="+getBinaryRepresentation(x));
+			 y = carry <<1;
+			 System.out.println("y=="+getBinaryRepresentation(y));
+		}
+		System.out.println("ans=="+getBinaryRepresentation(x));
+		return x;
+		
+	}
 	public static void main(String[] args) {
 //		System.out.println(getBinaryRepresentation(2147483649L));
 //		System.out.println(getEleThatAppearsOnce(new int[]{12, 1, 12, 3, 12, 1, 1, 2, 3, 3}));
@@ -161,7 +177,8 @@ public class BitManipulation {
 		
 //		System.out.println(isOppSigns(100, -100));
 //		System.out.println(addOne(10));
-		System.out.println(multipleNumWithThreeDotFive(11));
+//		System.out.println(multipleNumWithThreeDotFive(11));
+		System.out.println(addTwoNumbers(1,1));
 //		System.out.println(turnOffRightMostSetBit(12));
 	}
 }
