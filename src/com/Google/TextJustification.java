@@ -6,21 +6,76 @@ import java.util.List;
 public class TextJustification {
 
 	public static String constructString(int lineCount, int charCount, List<String> line, int spaceCount, int extra, int max,boolean lastLine ) {
-		int rem = (max- charCount);
-		if(line.size() > 2) {
-			spaceCount = rem / (line.size()-1);
-	        extra = rem % (line.size()-1);
-		}else {
-			if(lastLine) extra = rem;
-			else spaceCount = rem;
-		}
+//		int rem = (max- charCount);
+//		if(line.size() > 2) {
+//			spaceCount = rem / (line.size()-1);
+//	        extra = rem % (line.size()-1);
+//		}else {
+//			if(lastLine) extra = rem;
+//			else spaceCount = rem;
+//		}
+//        
+//        StringBuilder lineStr = new StringBuilder("");
+//        for(int l=0; l<line.size(); l++) {
+//            lineStr.append(line.get(l));
+//            int k=0;
+//            while(k++ < spaceCount && l < line.size()-1) lineStr.append(" ");
+//            if(extra > 0) {
+//                lineStr.append(" ");
+//                extra--;
+//            }
+//        }
+//        while(extra > 0) {
+//        	lineStr.append(" ");
+//            extra--;
+//        }
+int rem = (max- charCount);
+   
+if(!lastLine) {
+	if(line.size() > 2) {
+		spaceCount = rem / (line.size()-1);
+	    extra = rem % (line.size()-1);
+	}else {
+		if(line.size() < 2)extra = rem;
+		if(line.size() == 2)spaceCount = rem;
+	}
+}else {
+	if(line.size() < 2) extra = rem;
+    else {
+        spaceCount =1;
+        extra = (rem - (line.size()-1));
+    }
+}
+
+	
+//		if(lastLine) {
+//		    if(line.size() < 2) extra = rem;
+//		    else {
+//		        spaceCount = line.size()-1;
+//		        extra = (rem -spaceCount);
+//		    }
+//		}else{
+//		    if(line.size() >= 2)spaceCount = rem;
+//		}
+//		if(line.size() > 2) {
+//			spaceCount = rem / (line.size()-1);
+//	        extra = rem % (line.size()-1);
+//		}else {
+//            
+//			// if(lastLine || line.size() < 2) extra = rem;
+//			// else {
+//			// if(line.size() >= 2)spaceCount = rem;
+//			// }
+//		}
         
         StringBuilder lineStr = new StringBuilder("");
         for(int l=0; l<line.size(); l++) {
             lineStr.append(line.get(l));
             int k=0;
-            while(k++ < spaceCount && l < line.size()-1) lineStr.append(" ");
-            if(extra > 0) {
+//            if(!lastLine)
+                while(k++ < spaceCount && l < line.size()-1) lineStr.append(" ");
+//            if(lastLine) lineStr.append(" ");
+            if(!lastLine && extra > 0) {
                 lineStr.append(" ");
                 extra--;
             }
@@ -59,9 +114,10 @@ public class TextJustification {
         
     }
 	public static void main(String[] args) {
-//		String[] words = {"This", "is", "an", "example", "of", "text", "justification."};
+		String[] words = {"you're","gonna","get."};
+//		String[] words = {"Listen","to","many,","speak","to","a","few."};
 //		String[] words = {"What","must","be","acknowledgment","shall","be"};
-		String[] words = {"Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"};
+//		String[] words = {"Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"};
 		int maxWidth = 20;
 		List<String> output = fullJustify(words, maxWidth);
 		for(String str: output) System.out.println("'"+str+"'");
