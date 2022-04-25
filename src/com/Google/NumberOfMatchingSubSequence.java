@@ -17,7 +17,6 @@ public class NumberOfMatchingSubSequence {
     public static int numMatchingSubseq(String s, String[] words) {
         
         int subSeqCount = 0;
-        HashM
         for(String word: words) {
             if(isSubSeq(s, word)) {
                 subSeqCount++;
