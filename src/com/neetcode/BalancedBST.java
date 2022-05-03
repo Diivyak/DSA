@@ -48,7 +48,7 @@ public class BalancedBST {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//		root = [3,9,20,null,null,15,7]
 
 	}
 
